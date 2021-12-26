@@ -35,7 +35,7 @@ const newServers = (req, res) => {
     })    
 };
 
-//GET '/servers/:serverID'
+//GET '/servers/:id'
 const getOneServer = (req, res, next) => {
     let id = req.params.id; //get the server id
 
@@ -48,12 +48,30 @@ const getOneServer = (req, res, next) => {
     });
 };
 
-//PUT '/servers/:serverID'
+//PUT '/servers/:id'
 const updateServer = (req, res, next) => {
-    res.json({message: "Update a server "});
+    let id = req.params.id; //get the server id
+   
+    //find the specific server with the id and update data
+    Server.findOne({_id:id}, req.body, { new:false }, (err, data) => {
+    if(err || !data) {
+        return res.json({message: "Server doesn't exist."});
+    }
+    else {
+       data.name = req.body.name;
+        //save changes to db
+        data.save(err => {
+            if (err) { 
+            return res.json({message: "Comment failed to add.", error:err});
+            }
+            return res.json(data);
+        })  
+    } 
+    
+    });
 };
 
-//DELETE '/servers/:serverID'
+//DELETE '/servers/:id'
 const deleteOneServer = (req, res, next) => {
     let id = req.params.id; // get the name of tea to delete
 
