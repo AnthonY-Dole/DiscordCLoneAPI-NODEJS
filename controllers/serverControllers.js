@@ -37,7 +37,7 @@ const newServers = (req, res) => {
 
 //GET '/servers/:serverID'
 const getOneServer = (req, res, next) => {
-    let id = req.params.id; //get the server name
+    let id = req.params.id; //get the server id
 
     //find the specific server with the id
     Server.findOne({_id:id}, (err, data) => {
@@ -50,12 +50,21 @@ const getOneServer = (req, res, next) => {
 
 //PUT '/servers/:serverID'
 const updateServer = (req, res, next) => {
-    res.json({message: "Update 1 server "});
+    res.json({message: "Update a server "});
 };
 
 //DELETE '/servers/:serverID'
 const deleteOneServer = (req, res, next) => {
-    res.json({message: "DELETE a server"});
+    let id = req.params.id; // get the name of tea to delete
+
+    Server.deleteOne({_id:id}, (err, data) => {
+    //if there's nothing to delete return a message
+    if( data.deletedCount == 0) return res.json({message: "Server doesn't exist."});
+    //else if there's an error, return the err message
+    else if (err) return res.json(`Something went wrong, please try again. ${err}`);
+    //else, return the success message
+    else return res.json({message: "Server deleted."});
+    });
 };
 
 //export controller functions
