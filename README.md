@@ -15,7 +15,7 @@ Discord Clone API is a backend app imitate Discord
 | /servers      | GET                  | Displays all servers
 | /servers      | POST               | Creates a new servers
 |/servers/:id   | GET     | Displays a specific server, by id
-|/servers/:id   | PUT  | Adds a comment to a specific server, by id
+|/servers/:id   | PUT  | Update  server, by id
 |/servers/:id   | DELETE | Deletes a specific server, by ID
 	
 ### Technologies
@@ -37,7 +37,7 @@ To run this project locally, clone repo and then execute in command prompt:
 ```
 $ npm install
 $ npm start or nodemoon server.js 
-spoil nodemoon serve.js is better for you 😉
+spoil nodemoon server.js is better for you 😉
 ```
 
 ### Next Steps
