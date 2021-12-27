@@ -15,10 +15,7 @@ const mongoose = require("mongoose");
             type:String,
             required:true
         },
-        serverList:{
-            type:Array,
-            required:false
-        }
+        serverList:[{ name: String}]
     });
 
     const User = mongoose.model('User', UserSchema); 
