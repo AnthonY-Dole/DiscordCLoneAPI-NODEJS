@@ -1,0 +1,28 @@
+body{
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(135deg, hsla(224, 75%, 45%, 1) 0%, hsla(324, 75%, 45%, 1) 100%);
+  }
+  div.wave{
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    z-index: 99;
+  }
+  
+  .wave svg{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+  }
+  
+  #container {
+      position: relative;
+      height: 90vh;
+  }
+
+.jumbotron{
+  color: aliceblue;
+
+}

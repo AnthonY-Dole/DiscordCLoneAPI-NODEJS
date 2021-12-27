@@ -7,6 +7,7 @@ const helmet = require('helmet');
 
 const compression = require('compression');
 const app = express();
+app.use("/public", express.static(process.cwd() + "/public"));
 app.use(helmet());
 app.use(express.json());
 app.use(compression()); //Compress all routes
