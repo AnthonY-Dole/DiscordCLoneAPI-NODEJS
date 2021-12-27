@@ -17,7 +17,7 @@ const mongoose = require("mongoose");
         },
         serverList:{
             type:Array,
-            required:true
+            required:false
         }
     });
 
