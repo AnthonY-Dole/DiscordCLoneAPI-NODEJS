@@ -17,6 +17,11 @@ Discord Clone API is a backend app imitate Discord
 |/servers/:id   | GET     | Displays a specific server, by id
 |/servers/:id   | PUT  | Update  server, by id
 |/servers/:id   | DELETE | Deletes a specific server, by ID
+| /users      | GET                  | Displays all users
+| /users      | POST               | Creates a new user
+|/users/:id   | GET     | Displays a specific user, by id
+|/users/:id   | PATCH  | Update  user, by id
+
 	
 ### Technologies
 Project is created with:
