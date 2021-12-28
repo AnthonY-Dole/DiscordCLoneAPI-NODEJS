@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-
-
-    
+  
     const ServerSchema =  new mongoose.Schema({
         name: {
             type:String,

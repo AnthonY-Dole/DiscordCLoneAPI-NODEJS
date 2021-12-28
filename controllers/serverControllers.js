@@ -61,6 +61,10 @@ const updateServer = (req, res, next) => {
     }
     else {
        data.name = req.body.name;
+       data.owner = req.body.owner;
+       data.channelID = req.body.channelID;
+       data.status = req.body.status;
+       
         //save changes to db
         data.save(err => {
             if (err) { 
@@ -91,7 +95,7 @@ const getOneServerAndAllUser = (req, res, next) => {
     let id = req.params.id; //get the server id
 
     //find the specific server with the id
-    Server.find({}, (err, data)=>{
+    Server.findOne({_id:id}, (err, data) => {
         if (err){
             return res.json({Error: err});
         }
@@ -136,25 +140,36 @@ const getAllChannels = (req, res, next) => {
 //POST '/servers/:id/channels'
 const newChannel = (req, res) => {
     let id = req.params.id;
-    Channel.findOne({ name: req.body.name }, (err, data) => {
 
-        if (!data) {
-            const newChannel = new Channel({
-                name:req.body.name,
-                serverID: id,
-               
-            })
-
-            // save this object to database
-            newChannel.save((err, data)=>{
-                if(err) return res.json({Error: err});
-                return res.json(data);
-            })        
-        }else{
-            if(err) return res.json(`Something went wrong, please try again. ${err}`);
-            return res.json({message:"Channel already exists"});
+    Server.findOne({_id:id}, (err, data) => {
+        if(err || !data) {
+            return res.json({message: "Server doesn't exist."});
         }
-    })    
+        else 
+        {
+            Channel.findOne({ name: req.body.name }, (err, data) => {
+
+                if (!data) {
+                    const newChannel = new Channel({
+                        name:req.body.name,
+                        serverID: id,
+                       
+                    })
+        
+                    // save this object to database
+                    newChannel.save((err, data)=>{
+                        if(err) return res.json({Error: err});
+                        return res.json(data);
+                    })        
+                }else{
+                    if(err) return res.json(`Something went wrong, please try again. ${err}`);
+                    return res.json({message:"Channel already exists"});
+                }
+            })    
+    
+        }
+       
+        });
 };
 //GET '/servers/:id/channels/:id'
 const getOneChannel = (req, res, next) => {

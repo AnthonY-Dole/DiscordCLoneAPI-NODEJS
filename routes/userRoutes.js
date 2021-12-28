@@ -10,7 +10,7 @@ router.get('/users', userController.getAllUsers);
 router.post('/users', upload.none(), userController.newUsers);
 
 router.get('/users/:id', userController.getOneUser);
-router.patch('/users/:id', userController.updateUser);
+router.patch('/users/:id',upload.none(), userController.updateUser);
 
 
 module.exports = router; // export to use in server.js

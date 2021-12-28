@@ -10,7 +10,7 @@ router.get('/servers', serverController.getAllServers);
 router.post('/servers', upload.none(), serverController.newServers);
 
 router.get('/servers/:id', serverController.getOneServer);
-router.put('/servers/:id', serverController.updateServer);
+router.put('/servers/:id', upload.none(), serverController.updateServer);
 router.delete('/servers/:id', serverController.deleteOneServer);
 //USER
 router.get('/servers/:id/users', serverController.getOneServerAndAllUser);

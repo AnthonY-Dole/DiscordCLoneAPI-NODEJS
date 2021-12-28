@@ -1,120 +1,118 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./public/style.css">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="./public/style.css" />
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
 
-    <title>DISCORD CLONE API 🪞</title>
-  </head>
-  <body>
-      <div id="container">
-        <div class="container text-center">
-            <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                  <h1 class="display-1 font-weight-bold">Welcome to discord clone API 🪞</h1>
-                  <p class="lead">The api clone made with NodeJS and MongoDB</p>
+        <title>DISCORD CLONE API 🪞</title>
+    </head>
+    <body>
+        <div id="container-fluid">
+            <div class="container text-center">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-1 font-weight-bold">Welcome to discord clone API 🪞</h1>
+                        <p class="lead">The api clone made with NodeJS and MongoDB</p>
+                    </div>
                 </div>
-              </div>
-        <br>
-        <br>
-           </div>
+                <br />
+                <br />
+            </div>
 
-           <div class="container">
-           <table class="table table-hover text-light">
-            <thead>
-              <tr>
-                
-                <th scope="col">Routes</th>
-                <th scope="col">HTTP Methods</th>
-                <th scope="col">Description</th>
-               
-              </tr>
-            </thead>
-            <tbody>
-               
-              <tr class="table-dark">
-            <th scope="row">/servers</th>
-                <td>GET</td>
-                <td>Displays all servers</td>
-              </tr>
-            
-              <tr class="table-dark">
-                <th scope="row">/servers</th>
-                <td>POST</td>
-                <td>Creates a new servers</td>
-              </tr>
+            <div class="container">
+                <table class="table table-hover text-light">
+                    <thead>
+                        <tr>
+                            <th scope="col">Routes</th>
+                            <th scope="col">HTTP Methods</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-dark">
+                            <th scope="row">/servers</th>
+                            <td>GET</td>
+                            <td>Displays all servers</td>
+                        </tr>
 
-              <tr class="table-dark">
-                <th scope="row">/servers/:id</th>
-                <td>GET</td>
-                <td>Displays a specific server, by id</td>
-              </tr>
-              <tr class="table-dark">
-                <th scope="row">/servers/:id</th>
-                <td>	PUT</td>
-                <td>Update server, by id</td>
-              </tr>
-              <tr class="table-dark">
-                <th scope="row">/servers/:id</th>
-                <td>DELETE</td>
-                <td>Deletes a specific server, by ID</td>
-              </tr>
-              <tr class="table-dark">
-                <th scope="row">/users</th>
-                <td>GET</td>
-                <td>Displays all users</td>
-              </tr>
-              <tr class="table-dark">
-                <th scope="row">/users</th>
-                <td>POST</td>
-                <td>Creates a new user</td>
-              </tr>
-              <tr class="table-dark">
-                <th scope="row">/users/:id</th>
-                <td>GET</td>
-                <td>Displays a specific user, by id</td>
-              </tr>
-              <tr class="table-dark">
-                <th scope="row">/users/:id</th>
-                <td>PATCH</td>
-                <td>Update user, by id</td>
-              </tr>
-              <tr class="table-dark">
-                <th scope="row">/servers/:id/channels</th>
-                <td>GET</td>
-                <td>Display all channel in a server </td>
-              </tr>
-              <tr class="table-dark">
-                <th scope="row">/servers/:id/channels/:id</th>
-                <td>GET</td>
-                <td>Display channel in a server by ID</td>
-              </tr>
-              <tr class="table-dark">
-                <th scope="row">/servers/:id/channels</th>
-                <td>POST</td>
-                <td>POST channel by server ID</td>
-              </tr>
-              <tr class="table-dark">
-                <th scope="row">/servers/:id/channels/:id</th>
-                <td>DELETE</td>
-                <td>Delete server by ID</td>
-              </tr>
-              
-            </tbody>
-          </table>
-          <h6 class="text-light">Use posman for request <a href="/public/DiscordCLone.postman_collection.json" download>click here  
-            <img src="/public/postman-logo.png" alt="postmanlogo" width="35" height="35">
-          </a></h6>
-          <h6 class="text-light">Give a ⭐ on my <a href="https://github.com/AnthonY-Dole/DiscordCLoneAPI-NODEJS"> 
-            <img src="/public/github-logo.png" alt="githublogo" width="35" height="35"> </a> repo </h6>
+                        <tr class="table-dark">
+                            <th scope="row">/servers</th>
+                            <td>POST</td>
+                            <td>Creates a new servers</td>
+                        </tr>
+
+                        <tr class="table-dark">
+                            <th scope="row">/servers/:id</th>
+                            <td>GET</td>
+                            <td>Displays a specific server, by id</td>
+                        </tr>
+                        <tr class="table-dark">
+                            <th scope="row">/servers/:id</th>
+                            <td>PUT</td>
+                            <td>Update server, by id</td>
+                        </tr>
+                        <tr class="table-dark">
+                            <th scope="row">/servers/:id</th>
+                            <td>DELETE</td>
+                            <td>Deletes a specific server, by ID</td>
+                        </tr>
+                        <tr class="table-dark">
+                            <th scope="row">/users</th>
+                            <td>GET</td>
+                            <td>Displays all users</td>
+                        </tr>
+                        <tr class="table-dark">
+                            <th scope="row">/users</th>
+                            <td>POST</td>
+                            <td>Creates a new user</td>
+                        </tr>
+                        <tr class="table-dark">
+                            <th scope="row">/users/:id</th>
+                            <td>GET</td>
+                            <td>Displays a specific user, by id</td>
+                        </tr>
+                        <tr class="table-dark">
+                            <th scope="row">/users/:id</th>
+                            <td>PATCH</td>
+                            <td>Update user, by id</td>
+                        </tr>
+                        <tr class="table-dark">
+                            <th scope="row">/servers/:id/channels</th>
+                            <td>GET</td>
+                            <td>Display all channel in a server</td>
+                        </tr>
+                        <tr class="table-dark">
+                            <th scope="row">/servers/:id/channels/:id</th>
+                            <td>GET</td>
+                            <td>Display channel in a server by ID</td>
+                        </tr>
+                        <tr class="table-dark">
+                            <th scope="row">/servers/:id/channels</th>
+                            <td>POST</td>
+                            <td>POST channel by server ID</td>
+                        </tr>
+                        <tr class="table-dark">
+                            <th scope="row">/servers/:id/channels/:id</th>
+                            <td>DELETE</td>
+                            <td>Delete server by ID</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h6 class="text-light">
+                    Use posman for request
+                    <a  id="link" href="/public/DiscordCLone.postman_collection.json" download>
+                        click here
+                        <img src="/public/postman-logo.png" alt="postmanlogo" width="35" height="35" />
+                    </a>
+                </h6>
+                <h6 class="text-light">
+                    Give a ⭐ on my <a href="https://github.com/AnthonY-Dole/DiscordCLoneAPI-NODEJS"> <img src="/public/github-logo.png" alt="githublogo" width="35" height="35" /></a>repo
+                </h6>
+            </div>
         </div>
-       
-      </div> 
-    
-      
-  </body>
+    </body>
 </html>

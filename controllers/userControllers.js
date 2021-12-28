@@ -58,11 +58,15 @@ const updateUser = (req, res, next) => {
         return res.json({message: "User doesn't exist."});
     }
     else {
-       data.pseudo = req.body.pseudo;
+        data.pseudo = req.body.pseudo;
+        data.isAdmin = req.body.isAdmin;
+        data.password = req.body.password;
+        data.serverList = req.body.serverList;
+        
         //save changes to db
         data.save(err => {
             if (err) { 
-            return res.json({message: "User failed to add.", error:err});
+            return res.json({message: "User failed to update.", error:err});
             }
             return res.json(data);
         })  
