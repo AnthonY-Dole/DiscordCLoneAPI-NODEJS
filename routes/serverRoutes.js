@@ -17,6 +17,8 @@ router.get('/servers/:id/users', serverController.getOneServerAndAllUser);
 //CHANNEL
 router.get('/servers/:id/channels', serverController.getAllChannels);
 router.post('/servers/:id/channels', upload.none(), serverController.newChannel);
+router.get('/servers/:id/channels/:id', serverController.getOneChannel);
+router.delete('/servers/:id/channels/:id', serverController.deleteOneChannel);
 
 
 module.exports = router; // export to use in server.js

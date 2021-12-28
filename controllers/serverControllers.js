@@ -156,6 +156,32 @@ const newChannel = (req, res) => {
         }
     })    
 };
+//GET '/servers/:id/channels/:id'
+const getOneChannel = (req, res, next) => {
+    let id = req.params.id; //get the server id
+
+    //find the specific server with the id
+    Channel.findOne({_id:id}, (err, data) => {
+    if(err || !data) {
+        return res.json({message: "Channel doesn't exist."});
+    }
+    else return res.json(data); 
+    });
+};
+
+//DELETE '/servers/:id/channels/:id'
+const deleteOneChannel = (req, res, next) => {
+    let id = req.params.id; // get the name of tea to delete
+
+    Channel.deleteOne({_id:id}, (err, data) => {
+    //if there's nothing to delete return a message
+    if( data.deletedCount == 0) return res.json({message: "CHannel doesn't exist."});
+    //else if there's an error, return the err message
+    else if (err) return res.json(`Something went wrong, please try again. ${err}`);
+    //else, return the success message
+    else return res.json({message: "Channel deleted."});
+    });
+};
 
 //export controller functions
 module.exports = {
@@ -166,5 +192,7 @@ module.exports = {
     deleteOneServer,
     getOneServerAndAllUser,
     getAllChannels,
-    newChannel
+    newChannel,
+    getOneChannel,
+    deleteOneChannel
 };

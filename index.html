@@ -11,24 +11,6 @@
     <title>DISCORD CLONE API 🪞</title>
   </head>
   <body>
-    <div class="wave">
-        
-        <svg width="100%" height="200px" fill="none" version="1.1"
-         xmlns="http://www.w3.org/2000/svg">
-          <path 
-            fill="white" 
-            d="
-              M0 67
-              C 273,183
-                822,-41
-                1920.01,106 
-              V 359 
-              H 0 
-              V 67
-              Z">
-          </path>
-        </svg>
-      </div>
       <div id="container">
         <div class="container text-center">
             <div class="jumbotron jumbotron-fluid">
@@ -101,6 +83,26 @@
                 <td>PATCH</td>
                 <td>Update user, by id</td>
               </tr>
+              <tr class="table-dark">
+                <th scope="row">/servers/:id/channels</th>
+                <td>GET</td>
+                <td>Display all channel in a server </td>
+              </tr>
+              <tr class="table-dark">
+                <th scope="row">/servers/:id/channels/:id</th>
+                <td>GET</td>
+                <td>Display channel in a server by ID</td>
+              </tr>
+              <tr class="table-dark">
+                <th scope="row">/servers/:id/channels</th>
+                <td>POST</td>
+                <td>POST channel by server ID</td>
+              </tr>
+              <tr class="table-dark">
+                <th scope="row">/servers/:id/channels/:id</th>
+                <td>DELETE</td>
+                <td>Delete server by ID</td>
+              </tr>
               
             </tbody>
           </table>
@@ -112,7 +114,7 @@
         </div>
        
       </div> 
-      
+    
       
   </body>
 </html>
