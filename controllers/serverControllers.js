@@ -1,4 +1,5 @@
 const Channel = require('../models/channelModel');
+const Message = require('../models/messageModel');
 const Server = require('../models/serverModel');
 const User = require('../models/userModel');
 
@@ -100,7 +101,7 @@ const getOneServerAndAllUser = (req, res, next) => {
             return res.json({Error: err});
         }
         else{
-            User.find({}, (err, data)=>{
+            User.find({_id:id}, (err, data)=>{
                 if (err){
                     return res.json({Error: err});
                 }
@@ -124,13 +125,19 @@ const getAllChannels = (req, res, next) => {
     if(err || !data) {
         return res.json({message: "Server doesn't exist."});
     }
-    else 
+    else
     {
-        Channel.find({}, (err, data)=>{
+        
+        Channel.find({serverID:id},  (err, data) => {
             if (err){
                 return res.json({Error: err});
             }
-            return res.json(data);
+            else
+            {
+
+                return res.json(data);
+            }
+           
         })
 
     }
@@ -152,8 +159,7 @@ const newChannel = (req, res) => {
                 if (!data) {
                     const newChannel = new Channel({
                         name:req.body.name,
-                        serverID: id,
-                       
+                        serverID: id, 
                     })
         
                     // save this object to database
@@ -175,7 +181,7 @@ const newChannel = (req, res) => {
 const getOneChannel = (req, res, next) => {
     let id = req.params.id; //get the server id
 
-    //find the specific server with the id
+    //find the specific channel with the id
     Channel.findOne({_id:id}, (err, data) => {
     if(err || !data) {
         return res.json({message: "Channel doesn't exist."});
@@ -197,7 +203,65 @@ const deleteOneChannel = (req, res, next) => {
     else return res.json({message: "Channel deleted."});
     });
 };
+//MESSAGE----------------
+//GET '/servers/:id/channels/:id/messages'
+const getAllMessage = (req, res, next) => {
+    let id = req.params.id; //get the server id
 
+    //find the specific server with the id
+
+        
+        Channel.findOne({_id:id}, (err, data) => {
+            if(err || !data) {
+                return res.json({message: "Channel doesn't exist."});
+            }
+            else {
+                Message.find({_id:id},  (err, data) => {
+                    if (err || !data){
+                        return res.json({message: "Channel dont have message"});
+                    }
+                    else
+                    {
+        
+                        return res.json(data);
+                    }
+                   
+                })
+            }
+            }); 
+};
+
+//POST '/servers/:id/channels/:id/messages'
+const newMessage = (req, res) => {
+
+    let id = req.params.id; //get the server id
+
+    //find the specific channel with the id
+    Channel.findOne({_id:id}, (err, data) => {
+    if(err || !data) {
+        return res.json({message: "Channel doesn't exist."});
+    }
+    else {
+        if (!data) {
+            const newMessage = new Message({
+                message:req.body.message,
+                channelID: id, 
+                user:req.body.user,
+                
+            })
+
+            // save this object to database
+            newMessage.save((err, data)=>{
+                if(err) return res.json({Error: err});
+                return res.json(data);
+            })        
+        }else{
+            if(err) return res.json(`Something went wrong, please try again. ${err}`);
+            return res.json({message:"Message already exists"});
+        }
+    }
+    });
+};
 //export controller functions
 module.exports = {
     getAllServers, 
@@ -209,5 +273,7 @@ module.exports = {
     getAllChannels,
     newChannel,
     getOneChannel,
-    deleteOneChannel
+    deleteOneChannel,
+    getAllMessage,
+    newMessage
 };

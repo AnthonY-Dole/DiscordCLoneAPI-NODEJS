@@ -19,6 +19,7 @@ router.get('/servers/:id/channels', serverController.getAllChannels);
 router.post('/servers/:id/channels', upload.none(), serverController.newChannel);
 router.get('/servers/:id/channels/:id', serverController.getOneChannel);
 router.delete('/servers/:id/channels/:id', serverController.deleteOneChannel);
-
-
+//Message
+router.get('/servers/:id/channels/:id/messages', serverController.getAllMessage);
+router.post('/servers/:id/channels/:id/messages', upload.none(), serverController.newMessage);
 module.exports = router; // export to use in server.js
