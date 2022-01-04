@@ -1,5 +1,5 @@
 const User = require('../models/userModel');
-
+const bcrypt = require("bcrypt");
 
 //GET '/users'
 const getAllUsers = (req, res, next) => {
@@ -13,7 +13,7 @@ const getAllUsers = (req, res, next) => {
 
 //POST '/users'
 const newUsers = (req, res) => {
-    User.findOne({ pseudo: req.body.pseudo }, (err, data) => {
+    User.findOne({ pseudo: req.body.pseudo }, async (err, data) => {
 
         if (!data) {
             const newUsers = new User({
@@ -21,8 +21,11 @@ const newUsers = (req, res) => {
                 isAdmin: req.body.isAdmin,
                 password: req.body.password,
                 serverList: req.body.serverList,
+                online: req.body.online,
             })
-
+            const salt = await bcrypt.genSalt(10);
+            // now we set user password to hashed password
+            newUsers.password = await bcrypt.hash(newUsers.password, salt);
             // save this object to database
             newUsers.save((err, data)=>{
                 if(err) return res.json({Error: err});
@@ -53,7 +56,7 @@ const updateUser = (req, res, next) => {
     let id = req.params.id; //get the User id
    
     //find the specific User with the id and update data
-    User.findOne({_id:id}, req.body, { new:false }, (err, data) => {
+    User.findOne({_id:id}, req.body, { new:false }, async (err, data) => {
     if(err || !data) {
         return res.json({message: "User doesn't exist."});
     }
@@ -62,6 +65,12 @@ const updateUser = (req, res, next) => {
         data.isAdmin = req.body.isAdmin;
         data.password = req.body.password;
         data.serverList = req.body.serverList;
+        data.online = req.body.online;
+
+
+        const salt = await bcrypt.genSalt(10);
+        // now we set user password to hashed password
+        data.password = await bcrypt.hash(data.password, salt);
         
         //save changes to db
         data.save(err => {

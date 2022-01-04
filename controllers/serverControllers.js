@@ -21,7 +21,6 @@ const newServers = (req, res) => {
             const newServers = new Server({
                 name:req.body.name,
                 owner: req.body.owner,
-                channelID: req.body.channelID,
                 status: req.body.status,
                 createdOn: req.body.createdOn,
             })
@@ -56,14 +55,14 @@ const updateServer = (req, res, next) => {
     let id = req.params.id; //get the server id
    
     //find the specific server with the id and update data
-    Server.findOne({_id:id}, req.body, { new:false }, (err, data) => {
+    Server.findById({_id:id}, req.body, { new:false }, (err, data) => {
     if(err || !data) {
         return res.json({message: "Server doesn't exist."});
     }
     else {
        data.name = req.body.name;
        data.owner = req.body.owner;
-       data.channelID = req.body.channelID;
+       data.members = req.body.members;
        data.status = req.body.status;
        
         //save changes to db
@@ -211,7 +210,7 @@ const getAllMessage = (req, res, next) => {
     //find the specific server with the id
 
         
-        Channel.findOne({_id:id}, (err, data) => {
+        Channel.findById({_id:id}, (err, data) => {
             if(err || !data) {
                 return res.json({message: "Channel doesn't exist."});
             }
@@ -237,7 +236,7 @@ const newMessage = (req, res) => {
     let id = req.params.id; //get the server id
 
     //find the specific channel with the id
-    Channel.findOne({_id:id}, (err, data) => {
+    Channel.findById({_id:id}, (err, data) => {
     if(err || !data) {
         return res.json({message: "Channel doesn't exist."});
     }

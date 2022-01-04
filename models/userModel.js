@@ -15,8 +15,12 @@ const mongoose = require("mongoose");
             type:String,
             required:true
         },
+        online :{
+            type:Boolean,
+            required:false
+        },
         serverList: {
-            type:Array,
+            type: [String],
             required:false
         }
     });

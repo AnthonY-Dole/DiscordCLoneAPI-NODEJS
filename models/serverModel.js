@@ -9,10 +9,7 @@ const mongoose = require("mongoose");
             type:String,
             required:true
         },
-        channelID: {
-            type:Number,
-            required:true
-        },
+        
         status:{
             type:Boolean,
             required:true
@@ -20,6 +17,10 @@ const mongoose = require("mongoose");
         createdOn: {
             type:Date,
             default:Date.now
+        },
+        members:{
+        type:[String],
+        required:false
         }
     });
 
