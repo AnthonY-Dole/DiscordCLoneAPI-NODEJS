@@ -1,0 +1,2107 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "mirrorDiscord",
+    "version": "1.0",
+    "summary": "OpenAPi for communication ",
+    "description": "OpenAPi for communication with other user\n\n"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "mirrorDiscord"
+    }
+  ],
+  "paths": {
+    "/users/:userId": {
+      "parameters": [],
+      "get": {
+        "summary": "Get User Info by User ID",
+        "tags": [],
+        "operationId": "get-users-userId",
+        "description": "Récupérer les informations de l'utilisateur avec l'ID utilisateur correspondant.",
+        "parameters": [],
+        "security": [
+          {
+            "API Key - 1": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "GET /users/:userId?1": {
+                    "value": {
+                      "userId": 1,
+                      "pseudo": "Florent",
+                      "is-admin": true,
+                      "mdp": "string",
+                      "server_list": [
+                        {}
+                      ]
+                    }
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update User Information",
+        "operationId": "patch-users-userId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "PATCH /users/:userId/1?pseudo = pseudo \"Flo\"": {
+                    "value": {
+                      "userId": 1,
+                      "pseudo": "Flo",
+                      "is-admin": true,
+                      "mdp": "string",
+                      "server_list": [
+                        {}
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User Not Found"
+          }
+        },
+        "description": "Mettre à jour les informations d'un utilisateur existant à partir de son Id",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "string"
+                  },
+                  "": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "user": "string"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Patch user properties to update."
+        }
+      }
+    },
+    "/users/": {
+      "post": {
+        "summary": "Create New User",
+        "operationId": "post-user",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "_id",
+                      "pseudo",
+                      "isAdmin",
+                      "password",
+                      "online",
+                      "serverList",
+                      "__v"
+                    ],
+                    "properties": {
+                      "_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "pseudo": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "isAdmin": {
+                        "type": "boolean"
+                      },
+                      "password": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "online": {
+                        "type": "boolean"
+                      },
+                      "serverList": {
+                        "type": "array",
+                        "items": {
+                          "required": [],
+                          "properties": {}
+                        }
+                      },
+                      "__v": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": [
+                      {
+                        "_id": "61d44bf6272b6339408c3770",
+                        "pseudo": "DOLE Anthony",
+                        "isAdmin": true,
+                        "password": "$2b$10$Q9XvP1TUu4U5SKdmkT7TuugthzYiWay2/6bIAum8HUFur2lQ3./N.",
+                        "online": true,
+                        "serverList": [
+                          ""
+                        ],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d44c0f272b6339408c3773",
+                        "pseudo": "DIrecteur",
+                        "isAdmin": true,
+                        "password": "$2b$10$ck6ASKoeWjDOZIpAoV3SJOdwO0Me4EUrY33YlQ6pj5A4XlvcxJKga",
+                        "online": false,
+                        "serverList": [
+                          "YNOV, Ynov MASTER 1"
+                        ],
+                        "__v": 0
+                      },
+                      {
+                        "serverList": [],
+                        "_id": "61d44c1f272b6339408c3776",
+                        "pseudo": "Jacques",
+                        "isAdmin": false,
+                        "password": "$2b$10$stGuLkEgQB2nR2Ll6oqjS.hy7YJUmYnefYpA/vOgFODdasy9Tmwse",
+                        "online": false,
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d6a75dcc86d7e61bdd6035",
+                        "pseudo": "PIERRE",
+                        "isAdmin": false,
+                        "password": "$2b$10$C3QJ/nn42QINe6D/Ph/iquaitWsnJnBJ32Mb8/V4JT5HXStNklmHu",
+                        "online": false,
+                        "serverList": [
+                          "YNOV"
+                        ],
+                        "__v": 0
+                      }
+                    ]
+                  }
+                },
+                "examples": {
+                  "https://discord-clone-api-tp.herokuapp.com/users/?pseudo=Lucas&isAdmin=false&password=fdsqf&serverList=Ynov&online=false": {
+                    "value": [
+                      {
+                        "_id": "61d44bf6272b6339408c3770",
+                        "pseudo": "DOLE Anthony",
+                        "isAdmin": true,
+                        "password": "$2b$10$Q9XvP1TUu4U5SKdmkT7TuugthzYiWay2/6bIAum8HUFur2lQ3./N.",
+                        "online": true,
+                        "serverList": [
+                          ""
+                        ],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d44c0f272b6339408c3773",
+                        "pseudo": "DIrecteur",
+                        "isAdmin": true,
+                        "password": "$2b$10$ck6ASKoeWjDOZIpAoV3SJOdwO0Me4EUrY33YlQ6pj5A4XlvcxJKga",
+                        "online": false,
+                        "serverList": [
+                          "YNOV, Ynov MASTER 1"
+                        ],
+                        "__v": 0
+                      },
+                      {
+                        "serverList": [],
+                        "_id": "61d44c1f272b6339408c3776",
+                        "pseudo": "Jacques",
+                        "isAdmin": false,
+                        "password": "$2b$10$stGuLkEgQB2nR2Ll6oqjS.hy7YJUmYnefYpA/vOgFODdasy9Tmwse",
+                        "online": false,
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d6a75dcc86d7e61bdd6035",
+                        "pseudo": "PIERRE",
+                        "isAdmin": false,
+                        "password": "$2b$10$C3QJ/nn42QINe6D/Ph/iquaitWsnJnBJ32Mb8/V4JT5HXStNklmHu",
+                        "online": false,
+                        "serverList": [
+                          "YNOV"
+                        ],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d6a75dcc86d7e61bdd60335",
+                        "pseudo": "Lucas",
+                        "isAdmin": false,
+                        "password": "$2b$10$C3QJ/nn42QINe6D/Ph/iquaitWsnJnBJ32Mb8/V4JT5HXStNklmHu",
+                        "online": false,
+                        "serverList": [
+                          "YNOV"
+                        ],
+                        "__v": 0
+                      }
+                    ]
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              },
+              "multipart/form-data": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "description": "Create a new user."
+      },
+      "parameters": [],
+      "get": {
+        "summary": "",
+        "operationId": "get-users",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "_id",
+                      "pseudo",
+                      "isAdmin",
+                      "password",
+                      "online",
+                      "serverList",
+                      "__v"
+                    ],
+                    "properties": {
+                      "_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "pseudo": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "isAdmin": {
+                        "type": "boolean"
+                      },
+                      "password": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "online": {
+                        "type": "boolean"
+                      },
+                      "serverList": {
+                        "type": "array",
+                        "items": {
+                          "required": [],
+                          "properties": {}
+                        }
+                      },
+                      "__v": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": [
+                      {
+                        "_id": "61d44bf6272b6339408c3770",
+                        "pseudo": "DOLE Anthony",
+                        "isAdmin": true,
+                        "password": "$2b$10$Q9XvP1TUu4U5SKdmkT7TuugthzYiWay2/6bIAum8HUFur2lQ3./N.",
+                        "online": true,
+                        "serverList": [
+                          ""
+                        ],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d44c0f272b6339408c3773",
+                        "pseudo": "DIrecteur",
+                        "isAdmin": true,
+                        "password": "$2b$10$ck6ASKoeWjDOZIpAoV3SJOdwO0Me4EUrY33YlQ6pj5A4XlvcxJKga",
+                        "online": false,
+                        "serverList": [
+                          "YNOV, Ynov MASTER 1"
+                        ],
+                        "__v": 0
+                      },
+                      {
+                        "serverList": [],
+                        "_id": "61d44c1f272b6339408c3776",
+                        "pseudo": "Jacques",
+                        "isAdmin": false,
+                        "password": "$2b$10$stGuLkEgQB2nR2Ll6oqjS.hy7YJUmYnefYpA/vOgFODdasy9Tmwse",
+                        "online": false,
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d6a75dcc86d7e61bdd6035",
+                        "pseudo": "PIERRE",
+                        "isAdmin": false,
+                        "password": "$2b$10$C3QJ/nn42QINe6D/Ph/iquaitWsnJnBJ32Mb8/V4JT5HXStNklmHu",
+                        "online": false,
+                        "serverList": [
+                          "YNOV"
+                        ],
+                        "__v": 0
+                      }
+                    ]
+                  }
+                },
+                "examples": {
+                  "Tout les utilisateurs": {
+                    "value": [
+                      {
+                        "_id": "61d44bf6272b6339408c3770",
+                        "pseudo": "DOLE Anthony",
+                        "isAdmin": true,
+                        "password": "$2b$10$Q9XvP1TUu4U5SKdmkT7TuugthzYiWay2/6bIAum8HUFur2lQ3./N.",
+                        "online": true,
+                        "serverList": [
+                          ""
+                        ],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d44c0f272b6339408c3773",
+                        "pseudo": "DIrecteur",
+                        "isAdmin": true,
+                        "password": "$2b$10$ck6ASKoeWjDOZIpAoV3SJOdwO0Me4EUrY33YlQ6pj5A4XlvcxJKga",
+                        "online": false,
+                        "serverList": [
+                          "YNOV, Ynov MASTER 1"
+                        ],
+                        "__v": 0
+                      },
+                      {
+                        "serverList": [],
+                        "_id": "61d44c1f272b6339408c3776",
+                        "pseudo": "Jacques",
+                        "isAdmin": false,
+                        "password": "$2b$10$stGuLkEgQB2nR2Ll6oqjS.hy7YJUmYnefYpA/vOgFODdasy9Tmwse",
+                        "online": false,
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d6a75dcc86d7e61bdd6035",
+                        "pseudo": "PIERRE",
+                        "isAdmin": false,
+                        "password": "$2b$10$C3QJ/nn42QINe6D/Ph/iquaitWsnJnBJ32Mb8/V4JT5HXStNklmHu",
+                        "online": false,
+                        "serverList": [
+                          "YNOV"
+                        ],
+                        "__v": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "server": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "operationId": "get-servers",
+        "description": "Affiche tout les serveurs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "_id",
+                      "name",
+                      "owner",
+                      "status",
+                      "createdOn",
+                      "members",
+                      "__v"
+                    ],
+                    "properties": {
+                      "_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "owner": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "status": {
+                        "type": "boolean"
+                      },
+                      "createdOn": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "members": {
+                        "type": "array",
+                        "items": {
+                          "required": [],
+                          "properties": {}
+                        }
+                      },
+                      "__v": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": [
+                      {
+                        "_id": "61d443524ee073786e139a2c",
+                        "name": "Ynov Master",
+                        "owner": "DOLE Anthony",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:53:38.352Z",
+                        "members": [],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d4436d4ee073786e139a30",
+                        "name": "Ynov",
+                        "owner": "Directeur",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:54:05.584Z",
+                        "members": [],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d443bf6eb02f4c4928bc9d",
+                        "name": "Master 1",
+                        "owner": "CORDIER Florent",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:55:27.308Z",
+                        "members": [
+                          "Jean,Paul,Jaques,Michel"
+                        ],
+                        "__v": 0
+                      }
+                    ]
+                  }
+                },
+                "examples": {
+                  "https://discord-clone-api-tp.herokuapp.com/servers": {
+                    "value": [
+                      {
+                        "_id": "61d443524ee073786e139a2c",
+                        "name": "Ynov Master",
+                        "owner": "DOLE Anthony",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:53:38.352Z",
+                        "members": [],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d4436d4ee073786e139a30",
+                        "name": "Ynov",
+                        "owner": "Directeur",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:54:05.584Z",
+                        "members": [],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d443bf6eb02f4c4928bc9d",
+                        "name": "Master 1",
+                        "owner": "CORDIER Florent",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:55:27.308Z",
+                        "members": [
+                          "Jean,Paul,Jaques,Michel"
+                        ],
+                        "__v": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "_id",
+                      "name",
+                      "owner",
+                      "status",
+                      "createdOn",
+                      "members",
+                      "__v"
+                    ],
+                    "properties": {
+                      "_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "owner": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "status": {
+                        "type": "boolean"
+                      },
+                      "createdOn": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "members": {
+                        "type": "array",
+                        "items": {
+                          "required": [],
+                          "properties": {}
+                        }
+                      },
+                      "__v": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": [
+                      {
+                        "_id": "61d443524ee073786e139a2c",
+                        "name": "Ynov Master",
+                        "owner": "DOLE Anthony",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:53:38.352Z",
+                        "members": [],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d4436d4ee073786e139a30",
+                        "name": "Ynov",
+                        "owner": "Directeur",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:54:05.584Z",
+                        "members": [],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d443bf6eb02f4c4928bc9d",
+                        "name": "Master 1",
+                        "owner": "CORDIER Florent",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:55:27.308Z",
+                        "members": [
+                          "Jean,Paul,Jaques,Michel"
+                        ],
+                        "__v": 0
+                      }
+                    ]
+                  }
+                },
+                "examples": {
+                  "https://discord-clone-api-tp.herokuapp.com/servers": {
+                    "value": [
+                      {
+                        "_id": "61d443524ee073786e139a2c",
+                        "name": "Ynov Master",
+                        "owner": "DOLE Anthony",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:53:38.352Z",
+                        "members": [],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d4436d4ee073786e139a30",
+                        "name": "Ynov",
+                        "owner": "Directeur",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:54:05.584Z",
+                        "members": [],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d443bf6eb02f4c4928bc9d",
+                        "name": "Master 1",
+                        "owner": "CORDIER Florent",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:55:27.308Z",
+                        "members": [
+                          "Jean,Paul,Jaques,Michel"
+                        ],
+                        "__v": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "description": "affiche tout les serveurs"
+          }
+        }
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-servers",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "_id",
+                      "name",
+                      "owner",
+                      "status",
+                      "createdOn",
+                      "members",
+                      "__v"
+                    ],
+                    "properties": {
+                      "_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "owner": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "status": {
+                        "type": "boolean"
+                      },
+                      "createdOn": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "members": {
+                        "type": "array",
+                        "items": {
+                          "required": [],
+                          "properties": {}
+                        }
+                      },
+                      "__v": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": [
+                      {
+                        "_id": "61d443524ee073786e139a2c",
+                        "name": "Ynov Master",
+                        "owner": "DOLE Anthony",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:53:38.352Z",
+                        "members": [],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d4436d4ee073786e139a30",
+                        "name": "Ynov",
+                        "owner": "Directeur",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:54:05.584Z",
+                        "members": [],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d443bf6eb02f4c4928bc9d",
+                        "name": "Master 1",
+                        "owner": "CORDIER Florent",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:55:27.308Z",
+                        "members": [
+                          "Jean,Paul,Jaques,Michel"
+                        ],
+                        "__v": 0
+                      }
+                    ]
+                  }
+                },
+                "examples": {
+                  "localhost:3000/servers?name=Serveur Ynov&owner=Florent&channelID=3&status=true": {
+                    "value": [
+                      {
+                        "_id": "61d443524ee073786e139a2c",
+                        "name": "Ynov Master",
+                        "owner": "DOLE Anthony",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:53:38.352Z",
+                        "members": [],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d4436d4ee073786e139a30",
+                        "name": "Ynov",
+                        "owner": "Directeur",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:54:05.584Z",
+                        "members": [],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d443bf6eb02f4c4928bc9d",
+                        "name": "Master 1",
+                        "owner": "CORDIER Florent",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:55:27.308Z",
+                        "members": [
+                          "Jean,Paul,Jaques,Michel"
+                        ],
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d443bf6eb02f4c4928b4229d",
+                        "name": "Serveur Ynov",
+                        "owner": "Florent",
+                        "status": true,
+                        "createdOn": "2022-01-04T12:55:27.308Z",
+                        "members": [
+                          "Jean,Paul,Jaques,Michel"
+                        ],
+                        "__v": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Créer un nouveau serveur "
+      },
+      "parameters": []
+    },
+    "/servers/:serverId": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "owner": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "createdOn": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "members": {
+                      "type": "array",
+                      "items": {
+                        "required": [],
+                        "properties": {}
+                      }
+                    },
+                    "__v": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "_id",
+                    "name",
+                    "owner",
+                    "status",
+                    "createdOn",
+                    "members",
+                    "__v"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "_id": "61d4436d4ee073786e139a30",
+                      "name": "Ynov",
+                      "owner": "Directeur",
+                      "status": true,
+                      "createdOn": "2022-01-04T12:54:05.584Z",
+                      "members": [],
+                      "__v": 0
+                    }
+                  }
+                },
+                "examples": {
+                  "https://discord-clone-api-tp.herokuapp.com/servers/61d4436d4ee073786e139a30": {
+                    "value": {
+                      "_id": "61d4436d4ee073786e139a30",
+                      "name": "Ynov",
+                      "owner": "Directeur",
+                      "status": true,
+                      "createdOn": "2022-01-04T12:54:05.584Z",
+                      "members": [],
+                      "__v": 0
+                    }
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-servers-:serverId",
+        "description": "Récupérer les informations d'un serveur avec l'ID serveur correspondant."
+      },
+      "put": {
+        "summary": "",
+        "operationId": "put-servers-:serverId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "owner": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "members": {
+                      "type": "array",
+                      "items": {
+                        "required": [],
+                        "properties": {}
+                      }
+                    },
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "__v": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "_id",
+                    "name",
+                    "owner",
+                    "members",
+                    "status",
+                    "__v"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "_id": "61d443bf6eb02f4c4928bc9d",
+                      "name": "MASTER 2",
+                      "owner": "ERIC",
+                      "members": [
+                        "Jean,Paul,Jaques,Michel"
+                      ],
+                      "status": true,
+                      "__v": 1
+                    }
+                  }
+                },
+                "examples": {
+                  "https://discord-clone-api-tp.herokuapp.com/servers/61d443bf6eb02f4c4928bc9d?name=Master 2&owner=Eric&members=Jean,Paul,Michel&status=true": {
+                    "value": {
+                      "_id": "61d443bf6eb02f4c4928bc9d",
+                      "name": "MASTER 2",
+                      "owner": "ERIC",
+                      "members": [
+                        "Jean,Paul,Jaques,Michel"
+                      ],
+                      "status": true,
+                      "__v": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Mettre à jour un serveur"
+      },
+      "delete": {
+        "summary": "",
+        "operationId": "delete-servers-:serverId",
+        "responses": {
+          "200": {
+            "description": "Suppression bien effectuer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "owner": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "members": {
+                      "type": "array",
+                      "items": {
+                        "required": [],
+                        "properties": {}
+                      }
+                    },
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "__v": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "_id",
+                    "name",
+                    "owner",
+                    "members",
+                    "status",
+                    "__v"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "_id": "61d443bf6eb02f4c4928bc9d",
+                      "name": "MASTER 2",
+                      "owner": "ERIC",
+                      "members": [
+                        "Jean,Paul,Jaques,Michel"
+                      ],
+                      "status": true,
+                      "__v": 1
+                    }
+                  }
+                },
+                "examples": {
+                  "https://discord-clone-api-tp.herokuapp.com/servers/61d4456b1ebffbc174c0a077": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/servers/:serverId/users/": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "operationId": "get-servers-:serverId",
+        "description": "Récupérer les informations d'un serveur avec l'ID serveur correspondant."
+      },
+      "parameters": []
+    },
+    "/servers/:serverId/channels/": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {},
+        "operationId": "get-servers-:serverId-channels",
+        "description": "Affiche les channels d'un serveur par rapport a son id",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "description": "",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "_id",
+                    "name",
+                    "serverID",
+                    "__v"
+                  ],
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "serverID": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "__v": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "x-examples": {
+                  "example-1": [
+                    {
+                      "_id": "61d446291ebffbc174c0a087",
+                      "name": "Entraide",
+                      "serverID": "61d443524ee073786e139a2c",
+                      "__v": 0
+                    }
+                  ]
+                }
+              },
+              "examples": {
+                "https://discord-clone-api-tp.herokuapp.com/servers/61d443524ee073786e139a2c/channels/": {
+                  "value": [
+                    {
+                      "_id": "61d446291ebffbc174c0a087",
+                      "name": "Entraide",
+                      "serverID": "61d443524ee073786e139a2c",
+                      "__v": 0
+                    }
+                  ]
+                },
+                "example-1": {
+                  "value": [
+                    {
+                      "_id": "string",
+                      "name": "string",
+                      "serverID": "string",
+                      "__v": 0
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [],
+      "post": {
+        "summary": "",
+        "operationId": "post-servers-:serverId-channels",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "_id",
+                      "name",
+                      "serverID",
+                      "__v"
+                    ],
+                    "properties": {
+                      "_id": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "name": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "serverID": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "__v": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": [
+                      {
+                        "_id": "61d446291ebffbc174c0a087",
+                        "name": "Entraide",
+                        "serverID": "61d443524ee073786e139a2c",
+                        "__v": 0
+                      }
+                    ]
+                  }
+                },
+                "examples": {
+                  "https://discord-clone-api-tp.herokuapp.com/servers/61d443524ee073786e139a2c/channels?name=Jeux&serverID=61d443524ee073786e139a2c": {
+                    "value": [
+                      {
+                        "_id": "string",
+                        "name": "string",
+                        "serverID": "string",
+                        "__v": 0
+                      },
+                      {
+                        "_id": "61d446291ebffbc174c0a427",
+                        "name": "Jeux",
+                        "serverID": "61d443524ee073786e139a2c",
+                        "__v": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Créer un channel"
+      }
+    },
+    "/servers/:serverId/channels/:channelId": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "serverID": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "__v": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "_id",
+                    "name",
+                    "serverID",
+                    "__v"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "_id": "61d446291ebffbc174c0a087",
+                      "name": "Entraide",
+                      "serverID": "61d443524ee073786e139a2c",
+                      "__v": 0
+                    }
+                  }
+                },
+                "examples": {
+                  "https://discord-clone-api-tp.herokuapp.com/servers/61d443524ee073786e139a2c/channels/61d446291ebffbc174c0a087": {
+                    "value": {
+                      "_id": "61d446291ebffbc174c0a087",
+                      "name": "Entraide",
+                      "serverID": "61d443524ee073786e139a2c",
+                      "__v": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-servers-:serverId-channels",
+        "description": "Affiche les informations d'un chanel par rapport à son id, mais également à l'id d'un serveur",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "serverID": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "__v": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "_id",
+                  "name",
+                  "serverID",
+                  "__v"
+                ],
+                "x-examples": {
+                  "example-1": {
+                    "_id": "61d446291ebffbc174c0a087",
+                    "name": "Entraide",
+                    "serverID": "61d443524ee073786e139a2c",
+                    "__v": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [],
+      "put": {
+        "summary": "",
+        "operationId": "put-servers-:serverId-channels-channelId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "serverID": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "__v": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "_id",
+                    "name",
+                    "serverID",
+                    "__v"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "_id": "61d446291ebffbc174c0a087",
+                      "name": "Entraide",
+                      "serverID": "61d443524ee073786e139a2c",
+                      "__v": 0
+                    }
+                  }
+                },
+                "examples": {
+                  "https://discord-clone-api-tp.herokuapp.com/servers/61d443524ee073786e139a2c/channels/61d446291ebffbc174c0a087?name=game": {
+                    "value": {
+                      "_id": "61d446291ebffbc174c0a087",
+                      "name": "game",
+                      "serverID": "61d443524ee073786e139a2c",
+                      "__v": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Mais à jour le channel par rapport à son id, et l'id du serveur "
+      },
+      "delete": {
+        "summary": "",
+        "operationId": "delete-servers-:serverId-channels-channelId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "serverID": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "__v": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "_id",
+                    "name",
+                    "serverID",
+                    "__v"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "_id": "61d446291ebffbc174c0a087",
+                      "name": "Entraide",
+                      "serverID": "61d443524ee073786e139a2c",
+                      "__v": 0
+                    }
+                  }
+                },
+                "examples": {
+                  "https://discord-clone-api-tp.herokuapp.com/servers/61d443524ee073786e139a2c/channels/61d446291ebffbc174c0a087": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Supprimer un chanel par rapport a son id mais également à l'id sur serveur"
+      }
+    },
+    "/servers/:serverId/channels/:channelId/users/": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {},
+        "operationId": "get-servers-:serverId-channels",
+        "description": "affiche tout les utilisateurs d'un serveur en particulier "
+      },
+      "parameters": []
+    },
+    "/servers/:serverId/channels/:channelId/messages": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "MessageId",
+                      "message",
+                      "ChannelId",
+                      "UserId",
+                      "dateMessage",
+                      ""
+                    ],
+                    "properties": {
+                      "MessageId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "message": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "ChannelId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "UserId": {
+                        "type": "number"
+                      },
+                      "dateMessage": {
+                        "type": "number"
+                      },
+                      "": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": [
+                      {
+                        "MessageId": "string",
+                        "message": "string",
+                        "ChannelId": "string",
+                        "UserId": 0,
+                        "dateMessage": 0,
+                        "": "string"
+                      }
+                    ]
+                  }
+                },
+                "examples": {
+                  "https://discord-clone-api-tp.herokuapp.com/servers/61d443524ee073786e139a2c/channels/61d446291ebffbc174c0a087/messages": {
+                    "value": [
+                      {
+                        "MessageId": "string",
+                        "message": "string",
+                        "ChannelId": "string",
+                        "UserId": 0,
+                        "dateMessage": 0,
+                        "": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-messages",
+        "description": "Affiche les messages d'un channel par rapport à son id , et qui est liée à un serveur "
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-messages",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "description": "",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "MessageId",
+                      "message",
+                      "ChannelId",
+                      "UserId",
+                      "dateMessage",
+                      ""
+                    ],
+                    "properties": {
+                      "MessageId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "message": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "ChannelId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "UserId": {
+                        "type": "number"
+                      },
+                      "dateMessage": {
+                        "type": "number"
+                      },
+                      "": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": [
+                      {
+                        "MessageId": "string",
+                        "message": "string",
+                        "ChannelId": "string",
+                        "UserId": 0,
+                        "dateMessage": 0,
+                        "": "string"
+                      }
+                    ]
+                  }
+                },
+                "examples": {
+                  "ajout le message toto": {
+                    "value": [
+                      {
+                        "MessageId": "1",
+                        "message": "tutu",
+                        "ChannelId": "2",
+                        "UserId": 2,
+                        "dateMessage": 0,
+                        "": "string"
+                      },
+                      {
+                        "MessageId": "2",
+                        "message": "tata",
+                        "ChannelId": "2",
+                        "UserId": 3,
+                        "dateMessage": 0,
+                        "": "string"
+                      },
+                      {
+                        "MessageId": "3",
+                        "message": "toto",
+                        "ChannelId": "2",
+                        "UserId": 1,
+                        "dateMessage": 0,
+                        "": "string"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Créer un nouveau messages sur channel par rapport à son id , et qui est liée à un serveur "
+      },
+      "parameters": []
+    },
+    "/servers/:serverId/channels/:channelId/messages/:messageId": {
+      "parameters": [],
+      "delete": {
+        "summary": "",
+        "operationId": "delete-servers-:serverId-channels-channelId-messages---copy",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "MessageId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "ChannelId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "UserId": {
+                      "type": "number"
+                    },
+                    "dateMessage": {
+                      "type": "number"
+                    },
+                    "": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "MessageId",
+                    "message",
+                    "ChannelId",
+                    "UserId",
+                    "dateMessage",
+                    ""
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "MessageId": "string",
+                      "message": "string",
+                      "ChannelId": "string",
+                      "UserId": 0,
+                      "dateMessage": 0,
+                      "": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "https://discord-clone-api-tp.herokuapp.com/servers/61d443524ee073786e139a2c/channels/61d446291ebffbc174c0a087/messages/1": {
+                    "value": {
+                      "MessageId": "",
+                      "message": "",
+                      "ChannelId": "1",
+                      "UserId": 1,
+                      "dateMessage": null,
+                      "": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Supprime un message en particulier par rapport à son id"
+      },
+      "put": {
+        "summary": "",
+        "operationId": "put-servers-:serverId-channels-channelId-messages---copy",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "MessageId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "message": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "ChannelId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "UserId": {
+                      "type": "number"
+                    },
+                    "dateMessage": {
+                      "type": "number"
+                    },
+                    "": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "MessageId",
+                    "message",
+                    "ChannelId",
+                    "UserId",
+                    "dateMessage",
+                    ""
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "MessageId": "string",
+                      "message": "string",
+                      "ChannelId": "string",
+                      "UserId": 0,
+                      "dateMessage": 0,
+                      "": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "https://discord-clone-api-tp.herokuapp.com/servers/61d443524ee073786e139a2c/channels/61d446291ebffbc174c0a087/messages/1?message=coucou": {
+                    "value": {
+                      "MessageId": "1",
+                      "message": "coucou ?",
+                      "ChannelId": "1",
+                      "UserId": 2,
+                      "dateMessage": "24/05/2021",
+                      "": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Mais a jour un message en particulier par rapport à son id",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header"
+          }
+        ]
+      }
+    },
+    "servers": {
+      "parameters": [],
+      "post": {
+        "operationId": ""
+      },
+      "get": {
+        "summary": "",
+        "operationId": "getservers",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": ""
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Server": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "createdOn": {
+            "type": "string",
+            "minLength": 1
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "required": [],
+              "properties": {}
+            }
+          },
+          "__v": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "_id",
+          "name",
+          "owner",
+          "status",
+          "createdOn",
+          "members",
+          "__v"
+        ],
+        "x-examples": {
+          "example-1": {
+            "_id": "61d4436d4ee073786e139a30",
+            "name": "Ynov",
+            "owner": "Directeur",
+            "status": true,
+            "createdOn": "2022-01-04T12:54:05.584Z",
+            "members": [],
+            "__v": 0
+          }
+        }
+      },
+      "Channel": {
+        "type": "array",
+        "description": "",
+        "minItems": 1,
+        "uniqueItems": true,
+        "items": {
+          "type": "object",
+          "required": [
+            "_id",
+            "name",
+            "serverID",
+            "__v"
+          ],
+          "properties": {
+            "_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "serverID": {
+              "type": "string",
+              "minLength": 1
+            },
+            "__v": {
+              "type": "number"
+            }
+          }
+        },
+        "x-examples": {
+          "example-1": [
+            {
+              "_id": "string",
+              "name": "string",
+              "serverID": "string",
+              "__v": 0
+            }
+          ]
+        }
+      },
+      "User": {
+        "description": "",
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pseudo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "isAdmin": {
+            "type": "boolean"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 1
+          },
+          "online": {
+            "type": "boolean"
+          },
+          "serverList": {
+            "type": "array",
+            "items": {
+              "required": [],
+              "properties": {}
+            }
+          },
+          "__v": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "_id",
+          "pseudo",
+          "isAdmin",
+          "password",
+          "online",
+          "serverList",
+          "__v"
+        ],
+        "x-examples": {
+          "example-1": {
+            "_id": "61d44c0f272b6339408c3773",
+            "pseudo": "DIrecteur",
+            "isAdmin": true,
+            "password": "$2b$10$ck6ASKoeWjDOZIpAoV3SJOdwO0Me4EUrY33YlQ6pj5A4XlvcxJKga",
+            "online": false,
+            "serverList": [
+              "YNOV, Ynov MASTER 1"
+            ],
+            "__v": 0
+          }
+        }
+      },
+      "Message": {
+        "title": "Message",
+        "type": "object",
+        "examples": [
+          {
+            "MessageId": "string",
+            "message": "string",
+            "ChannelId": "string",
+            "UserId": 0,
+            "dateMessage": 0,
+            "": "string"
+          }
+        ],
+        "properties": {
+          "messageId": {
+            "type": "integer",
+            "description": "Unique identifier for the given Message\n."
+          },
+          "message": {
+            "type": "string",
+            "description": "message of the user"
+          },
+          "channelId": {
+            "type": "string",
+            "description": "Unique identifier beetween Channel and Message."
+          },
+          "userId": {
+            "type": "integer",
+            "description": "Unique identifier beetween User and Message."
+          },
+          "dateMessage": {
+            "type": "number",
+            "description": "Date of the message\n"
+          }
+        },
+        "required": [
+          "messageId",
+          "channelId",
+          "userId",
+          "dateMessage"
+        ]
+      }
+    },
+    "requestBodies": {},
+    "responses": {},
+    "securitySchemes": {
+      "API Key - 1": {
+        "name": "API Key",
+        "type": "apiKey",
+        "in": "query"
+      }
+    },
+    "examples": {}
+  },
+  "security": [
+    {
+      "API Key - 1": []
+    }
+  ]
+}

@@ -221,7 +221,7 @@ const getAllMessage = (req, res, next) => {
                     }
                     else
                     {
-        
+                        console.log(data);
                         return res.json(data);
                     }
                    
@@ -256,6 +256,7 @@ const newMessage = (req, res) => {
             })        
         }else{
             if(err) return res.json(`Something went wrong, please try again. ${err}`);
+            console.log(data);
             return res.json({message:"Message already exists"});
         }
     }

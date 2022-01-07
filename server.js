@@ -3,6 +3,7 @@ const express=require('express');
 const routesServer = require('./routes/serverRoutes'); 
 const routesServerUSer = require('./routes/serverRoutes'); 
 const routesUser = require('./routes/userRoutes'); 
+const routesAuth = require('./routes/authRoutes'); 
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 
@@ -15,6 +16,7 @@ app.use(compression()); //Compress all routes
 app.use('/', routesServer); //to use the routes
 app.use('/servers/', routesServerUSer); //to use the routes
 app.use('/', routesUser); //to use the routes
+app.use('/', routesAuth); //to use the routes
 
 app.route("/").get(function (req, res) {
     res.sendFile(process.cwd() + "/index.html");

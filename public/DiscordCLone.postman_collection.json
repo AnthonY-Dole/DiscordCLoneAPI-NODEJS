@@ -9,7 +9,7 @@
 			"name": "USER",
 			"item": [
 				{
-					"name": "GET all users",
+					"name": "GET all users OK",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -27,7 +27,7 @@
 					"response": []
 				},
 				{
-					"name": "POST USER",
+					"name": "POST USER OK",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -36,7 +36,7 @@
 							"formdata": [
 								{
 									"key": "pseudo",
-									"value": "CLAUDE",
+									"value": "PIERRE",
 									"type": "text"
 								},
 								{
@@ -46,13 +46,18 @@
 								},
 								{
 									"key": "password",
-									"value": "azertyuiop1487",
+									"value": "ezfazefazf",
 									"type": "text"
 								},
 								{
 									"key": "serverList",
-									"value": "",
+									"value": "YNOV",
 									"type": "text"
+								},
+								{
+									"key": "online",
+									"value": "false",
+									"type": "string"
 								}
 							]
 						},
@@ -70,26 +75,26 @@
 					"response": []
 				},
 				{
-					"name": "GET user by ID",
+					"name": "GET user by ID OK",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/users/61c9920c7d1404677bd9897f",
+							"raw": "localhost:3000/users/61d4488efdc0fb13780cac0b",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"users",
-								"61c9920c7d1404677bd9897f"
+								"61d4488efdc0fb13780cac0b"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "PATCH user by ID",
+					"name": "PATCH user by ID OK",
 					"request": {
 						"method": "PATCH",
 						"header": [],
@@ -98,20 +103,55 @@
 							"formdata": [
 								{
 									"key": "pseudo",
-									"value": "Antho",
+									"value": "TOTO ",
 									"type": "text"
+								},
+								{
+									"key": "isAdmin",
+									"value": "true",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "arfaeg031564",
+									"type": "string"
+								},
+								{
+									"key": "online",
+									"value": "false",
+									"type": "string"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/users/61c992887d1404677bd98987",
+							"raw": "localhost:3000/users/61d44c1f272b6339408c3776",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"users",
-								"61c992887d1404677bd98987"
+								"61d44c1f272b6339408c3776"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Users by Server ID NOK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/servers/61d443524ee073786e139a2c/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"servers",
+								"61d443524ee073786e139a2c",
+								"users"
 							]
 						}
 					},
@@ -123,7 +163,7 @@
 			"name": "SERVER",
 			"item": [
 				{
-					"name": "GET all servers",
+					"name": "GET all servers  OK",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -141,7 +181,7 @@
 					"response": []
 				},
 				{
-					"name": "POST Server",
+					"name": "POST Server  OK",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -184,26 +224,26 @@
 					"response": []
 				},
 				{
-					"name": "GET server by ID",
+					"name": "GET server by ID  OK",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/servers/61c863bdfe38ae3d59a6f8d1",
+							"raw": "localhost:3000/servers/61d4436d4ee073786e139a30",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"servers",
-								"61c863bdfe38ae3d59a6f8d1"
+								"61d4436d4ee073786e139a30"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "PUT server by ID",
+					"name": "PUT server by ID  OK",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -212,44 +252,211 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "COCO",
+									"value": "MASTER 2",
 									"type": "text"
 								},
 								{
 									"key": "owner",
-									"value": "EDIE",
+									"value": "ERIC",
+									"type": "text"
+								},
+								{
+									"key": "members",
+									"value": "Jean,Paul,Jaques,Michel",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/servers/61c863bdfe38ae3d59a6f8d1",
+							"raw": "localhost:3000/servers/61d443bf6eb02f4c4928bc9d",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"servers",
-								"61c863bdfe38ae3d59a6f8d1"
+								"61d443bf6eb02f4c4928bc9d"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "DELETE server by ID",
+					"name": "DELETE server by ID OK",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/servers/61c863bdfe38ae3d59a6f8d1",
+							"raw": "localhost:3000/servers/61d4456b1ebffbc174c0a077",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"servers",
-								"61c863bdfe38ae3d59a6f8d1"
+								"61d4456b1ebffbc174c0a077"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST channel in server by ID OK",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Aide aud devoir",
+									"type": "text"
+								},
+								{
+									"key": "serverID",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/servers/61d443524ee073786e139a2c/channels",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"servers",
+								"61d443524ee073786e139a2c",
+								"channels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET channel in server OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/servers/61d443524ee073786e139a2c/channels",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"servers",
+								"61d443524ee073786e139a2c",
+								"channels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET channels by ID  OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/servers/61d443524ee073786e139a2c/channels/61d445b21ebffbc174c0a07e",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"servers",
+								"61d443524ee073786e139a2c",
+								"channels",
+								"61d445b21ebffbc174c0a07e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Channel By ID  OK",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/servers/61d443524ee073786e139a2c/channels/61d445b21ebffbc174c0a07e",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"servers",
+								"61d443524ee073786e139a2c",
+								"channels",
+								"61d445b21ebffbc174c0a07e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET all messages OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/servers/61d443524ee073786e139a2c/channels/61d446291ebffbc174c0a087/messages",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"servers",
+								"61d443524ee073786e139a2c",
+								"channels",
+								"61d446291ebffbc174c0a087",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Messsage by channel ID  NOK",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Bonjour pouvez-vous m'aider sur ce sujet svp ?  ",
+									"type": "string"
+								},
+								{
+									"key": "user",
+									"value": "Pierre",
+									"type": "string"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/servers/61d443524ee073786e139a2c/channels/61d446291ebffbc174c0a087/messages",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"servers",
+								"61d443524ee073786e139a2c",
+								"channels",
+								"61d446291ebffbc174c0a087",
+								"messages"
 							]
 						}
 					},
