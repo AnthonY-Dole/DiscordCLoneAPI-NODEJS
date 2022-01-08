@@ -7,7 +7,7 @@
 
 
 ### General info
-Discord Clone API is a backend app imitate Discord
+Discord Clone API is a backend app imitate  the famous Discord app
 
 #### Routes ⚡
 | Routes | HTTP Methods| Description
@@ -21,6 +21,9 @@ Discord Clone API is a backend app imitate Discord
 | /users      | POST               | Creates a new user
 |/users/:id   | GET     | Displays a specific user, by id
 |/users/:id   | PATCH  | Update  user, by id
+|/servers/:id/channels   | GET  | Display channel in a server by ID
+|/servers/:id/channels/:id  | POST  | POST channel by server ID
+|/servers/:id/channels/:id  | DELETE  | Delete server by ID
 
 	
 ### Technologies
