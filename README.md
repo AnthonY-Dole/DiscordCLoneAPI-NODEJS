@@ -25,7 +25,15 @@ Discord Clone API is a backend app imitate  the famous Discord app
 |/servers/:id/channels/:id  | POST  | POST channel by server ID
 |/servers/:id/channels/:id  | DELETE  | Delete server by ID
 
-	
+
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+
+[You can find Postman request here ](../blob/master/public/DiscordCLone.postman_collection.json)
+
+
+
+
+
 ### Technologies
 Project is created with:
 <p>
