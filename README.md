@@ -28,7 +28,7 @@ Discord Clone API is a backend app imitate  the famous Discord app
 
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 
-[You can find Postman request here ](../blob/master/public/DiscordCLone.postman_collection.json)
+[You can find Postman request here ](../master/public/DiscordCLone.postman_collection.json)
 
 
 
